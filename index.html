@@ -7,10 +7,19 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div id="button-container">
-			<button>Rock</button>
-			<button>Paper</button>
-			<button>Scissors</button>
+		<div id ="game-container">
+			<div id="button-container">
+				<button id="rock" onClick="playRound('rock')"></button>
+				<button id="paper" onClick="playRound('paper')"></button>
+				<button id="scissors" onClick="playRound('scissors')"></button>
+			</div>
+			<div id="log"></div>
+			<div class="scores">
+				<div class="score">Player:</div>
+				<div id="pScore"></div>
+				<div class="score">Computer:</div>
+				<div id="cScore"></div>
+			</div>
 		</div>
 
 		<script src="rps.js" async defer></script>

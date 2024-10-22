@@ -1,6 +1,24 @@
+
 let playerScore = 0;
 let computerScore = 0;
 const rps = ["rock", "paper", "scissors"];
+
+function updateScore(is_player) {
+	if (is_player) {
+		playerScore++;
+		document.getElementById("pScore").innerHTML = playerScore;
+	}
+	else {
+		computerScore++;
+		document.getElementById("cScore").innerHTML = computerScore;
+	}
+	if (playerScore === 3)
+		alert(`You won this game ${playerScore} to ${computerScore}.`);
+	else if (computerScore === 3)
+		alert(
+			`The computer won this game ${computerScore} to ${playerScore}.`
+		);
+}
 
 function getComputerChoice() {
 	let choice = Math.random() * 100;
@@ -8,15 +26,6 @@ function getComputerChoice() {
 	if (choice >= 67) return rps[2];
 	else if (choice >= 33) return rps[1];
 	else return rps[0];
-}
-
-function getPlayerChoice() {
-	let i = -1;
-	let choice = prompt("What do you pick? Rock, paper or scissors?");
-	while (++i < rps.length) {
-		if (choice.toLowerCase() === rps[i]) return rps[i];
-	}
-	return getPlayerChoice();
 }
 
 function rpsLogic(playerChoice, computerChoice) {
@@ -29,7 +38,35 @@ function rpsLogic(playerChoice, computerChoice) {
 	else return false;
 }
 
-function playRound(playerChoice, computerChoice) {
+
+function playRound(playerChoice) {
+	computerChoice = getComputerChoice();
+	pChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
+	cChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+	const logDiv = document.getElementById("log");
+	if (playerChoice === computerChoice) {
+		logDiv.innerHTML = `It's a stalemate. Go again!`;
+	} else if (rpsLogic(playerChoice, computerChoice)) {
+		logDiv.textContent =
+		`You won this round. Your ${pChoice} beat the computer's ${cChoice}.`;
+		updateScore(true);
+	} else {
+		logDiv.textContent =
+		`The computer won this round. Its ${cChoice} beat your ${pChoice}.`;
+		updateScore(false);
+	}
+}
+
+/* function getPlayerChoice() {
+	let i = -1;
+	let choice = prompt("What do you pick? Rock, paper or scissors?");
+	while (++i < rps.length) {
+		if (choice.toLowerCase() === rps[i]) return rps[i];
+	}
+	return getPlayerChoice();
+} */
+
+/* function playRound(playerChoice, computerChoice) {
 	pChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
 	cChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
 	if (playerChoice === computerChoice) {
@@ -45,9 +82,9 @@ function playRound(playerChoice, computerChoice) {
 		);
 		computerScore++;
 	}
-}
+} */
 
-function playBestOfFive() {
+/* function playBestOfFive() {
 	while (playerScore < 3 && computerScore < 3)
 		playRound(getPlayerChoice(), getComputerChoice());
 	if (playerScore === 3)
@@ -56,7 +93,7 @@ function playBestOfFive() {
 		return console.log(
 			`The computer won this game ${computerScore} to ${playerScore}.`
 		);
-}
+} */
 
 /* function getPlayerChoice() {
 	const readline = require('readline');

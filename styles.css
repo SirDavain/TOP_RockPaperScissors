@@ -4,17 +4,60 @@ body {
 	margin: 0;
 }
 
+#rock {
+	background-image: url(assets/rock.png);
+}
+
+#paper {
+	background-image: url(assets/paper.png);
+}
+
+#scissors {
+	background-image: url(assets/scissors.png);
+}
+
 button {
-	background-color: #1179f5;
-	color: white;
-	border-radius: 5px;
-	border: 2px solid #1179f5;
-	width: 80px;
-	height: 25px;
 	flex: 0 1 auto;
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 180px;
+	height: 150px;
+	border: none;
+	color: transparent;
+	background-color: white;
+}
+
+button:hover {
+	filter: grayscale();
+}
+
+#game-container {
+	display: flex;
+	margin-top: 50%;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	gap: 30px;
 }
 
 #button-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 30px;
+}
+
+#logs {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	background-color: gray;
+}
+
+#scores {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
