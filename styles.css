@@ -52,7 +52,7 @@ button:disabled {
 
 #game-container {
 	display: flex;
-	margin-top: 30%;
+	margin-top: 20%;
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
