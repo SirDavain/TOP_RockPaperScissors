@@ -1,23 +1,36 @@
-
 let playerScore = 0;
 let computerScore = 0;
 const rps = ["rock", "paper", "scissors"];
+const buttons = document.querySelectorAll("button");
+const restart = document.getElementById("restart-button");
+restart.disabled = true;
 
 function updateScore(is_player) {
 	if (is_player) {
 		playerScore++;
 		document.getElementById("pScore").innerHTML = playerScore;
-	}
-	else {
+	} else {
 		computerScore++;
 		document.getElementById("cScore").innerHTML = computerScore;
 	}
-	if (playerScore === 3)
-		alert(`You won this game ${playerScore} to ${computerScore}.`);
-	else if (computerScore === 3)
-		alert(
-			`The computer won this game ${computerScore} to ${playerScore}.`
-		);
+	if (playerScore === 3) {
+		document.getElementById(
+			"log"
+		).innerHTML = `You won this game ${playerScore} to ${computerScore}.`;
+		endGame();
+	} else if (computerScore === 3) {
+		document.getElementById(
+			"log"
+		).innerHTML = `The computer won this game ${computerScore} to ${playerScore}.`;
+		endGame();
+	}
+}
+
+function endGame() {
+	buttons.forEach((Element) => {
+		Element.disabled = true;
+	});
+	restart.disabled = false;
 }
 
 function getComputerChoice() {
@@ -38,7 +51,6 @@ function rpsLogic(playerChoice, computerChoice) {
 	else return false;
 }
 
-
 function playRound(playerChoice) {
 	computerChoice = getComputerChoice();
 	pChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
@@ -47,12 +59,10 @@ function playRound(playerChoice) {
 	if (playerChoice === computerChoice) {
 		logDiv.innerHTML = `It's a stalemate. Go again!`;
 	} else if (rpsLogic(playerChoice, computerChoice)) {
-		logDiv.textContent =
-		`You won this round. Your ${pChoice} beat the computer's ${cChoice}.`;
+		logDiv.textContent = `You won this round. Your ${pChoice} beat the computer's ${cChoice}.`;
 		updateScore(true);
 	} else {
-		logDiv.textContent =
-		`The computer won this round. Its ${cChoice} beat your ${pChoice}.`;
+		logDiv.textContent = `The computer won this round. Its ${cChoice} beat your ${pChoice}.`;
 		updateScore(false);
 	}
 }

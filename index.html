@@ -7,18 +7,24 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div id ="game-container">
-			<div id="button-container">
-				<button id="rock" onClick="playRound('rock')"></button>
-				<button id="paper" onClick="playRound('paper')"></button>
-				<button id="scissors" onClick="playRound('scissors')"></button>
+		<div id="game-container">
+			<div>
+				<h1>Rock, Paper or Scissors? - A Best of 3</h1>
 			</div>
-			<div id="log"></div>
+			<div id="button-container">
+				<button class="button" id="rock" onClick="playRound('rock')"></button>
+				<button class="button" id="paper" onClick="playRound('paper')"></button>
+				<button class="button" id="scissors" onClick="playRound('scissors')"></button>
+			</div>
+			<div id="log">Pick one: Rock, paper or scissors</div>
 			<div class="scores">
 				<div class="score">Player:</div>
-				<div id="pScore"></div>
+				<div class="score" id="pScore">0</div>
 				<div class="score">Computer:</div>
-				<div id="cScore"></div>
+				<div class="score" id="cScore">0</div>
+			</div>
+			<div id="restart">
+				<button id="restart-button" onClick="location.reload()">Go again?</button>
 			</div>
 		</div>
 
